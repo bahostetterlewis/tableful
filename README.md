@@ -34,13 +34,13 @@ Non dict iterables use the first inner iterable as the headers, and each of the 
 
 Easy interface - 2 functions
 
-TablefulOfDict\()
-Prints a dict in a tableful way.
-Keyword args:
-file - an optional file like object that can be written
+TablefulOfDict\() - Prints a dict in a tableful way.
 
-Tableful\()
-Prints an iterable in a tableful way.
 Keyword args:
-file - an optional file like object that can be written
-headers - an optional headers iterable that will be used in place of the main iterables embedded headers
+* file - an optional file like object that can be written
+
+Tableful\() - Prints an iterable in a tableful way.
+
+Keyword args:
+* file - an optional file like object that can be written
+* headers - an optional headers iterable that will be used in place of the main iterables embedded headers
