@@ -4,6 +4,8 @@ tableful
 Pretty tables for various python iterables
 
 example:
+
+```python
 >>>d = {"First":["I'm data", "I'm other Data"], "Second":["I'm better data", "I'm the best data"]}
 >>>tableful.TablefulOfDict(d)
 +--------------+-----------------+
@@ -21,6 +23,7 @@ example:
 |   I'm data   | I'm better data |
 |I'm other Data|I'm the best data|
 +--------------+-----------------+
+```
 
 As you can see, they both have the same output.
 
@@ -30,12 +33,13 @@ Non dict iterables use the first inner iterable as the headers, and each of the 
 
 
 Easy interface - 2 functions
-TablefulOfDict
+
+TablefulOfDict\()
 Prints a dict in a tableful way.
 Keyword args:
 file - an optional file like object that can be written
 
-Tableful
+Tableful\()
 Prints an iterable in a tableful way.
 Keyword args:
 file - an optional file like object that can be written
