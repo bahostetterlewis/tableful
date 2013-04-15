@@ -13,7 +13,6 @@ def Tableful(iterable, *, headers=None, file=None):
     embeddedHeaders = True if not headers else False
 
     if file is not None:
-        print('File provided')
         tableprinter = partial(print, file=file)
 
     if not headers:
