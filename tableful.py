@@ -3,12 +3,25 @@ from functools import partial
 
 
 def TablefulOfDict(dictionary, *, file=None):
+    '''
+    Prints a dict in a tableful way!
+
+    keyword args:
+    file - any object that can be written to
+    '''
     headers = tableful_utils._GetDictHeaders(dictionary)
     rows = tableful_utils._GetDictRows(dictionary)
     Tableful(rows, headers=headers, file=file)
 
 
 def Tableful(iterable, *, headers=None, file=None):
+    '''
+    Prints an iterable in a tableful way!
+
+    keyword args:
+    headers - an optional headers iterable that will be used in place of main iterables
+    file - any object that can be written to
+    '''
     tableprinter = print
     embeddedHeaders = True if not headers else False
 
