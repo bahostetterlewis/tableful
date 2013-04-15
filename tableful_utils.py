@@ -1,3 +1,6 @@
+from itertools import zip_longest
+
+
 def _GetDictHeaders(dictionary):
     '''
     Calculate headers for the table based on dict keys.
@@ -25,13 +28,13 @@ def _GetIterableHeaders(iterable):
         return None
 
 
-def _GetDictColumns(dictionary):
+def _GetDictRows(dictionary):
     '''
     Grabs the columns out of a dict and turns them into rowss.
     '''
     try:
         values = (v for v in dictionary.values())
-        columns = tuple(zip(*values))
+        columns = tuple(zip_longest(*values, fillvalue=''))
         return columns
     except AttributeError:
         return None
@@ -47,6 +50,32 @@ def _GetIterableRows(iterable, *, embeddedHeaders=False):
     try:
         if embeddedHeaders:
             iterable = iterable[1:]
-        return tuple(iterable)
+        return tuple(zip(*zip_longest(*iterable, fillvalue='')))  # by zipping we can ensure all cols are filled
     except:
         return None
+
+
+def _GetColumnWidths(headers, rows):
+    '''
+    Calculate the width of each column.
+    '''
+    headers = (len(str(header)) for header in headers)
+    columns = zip(*rows)
+    columnLengths = []
+    for column in columns:
+        currentMax = max(column, key=lambda x: len(str(x)))
+        columnLengths.append(len(str(currentMax)))  # convert to str so we can grab len
+    return tuple(max(length) for length in zip(headers, columnLengths))
+
+
+def _GetDivider(columMaxes):
+    '''
+    Builds a divider based on the length of each column
+    '''
+    dashes = ('-' * length for length in columMaxes)
+    return "+{}+".format('+'.join(dashes))
+
+
+def _BuildCellString(text, width):
+    template = "{{: ^{}}}".format(width)
+    return template.format(text)
