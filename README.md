@@ -53,7 +53,7 @@ Recipies
 
 ```python
 >>>from csv import DictReader
->>>from tablefule import TablefulOfDict
+>>>from tableful import TablefulOfDict
 >>>from collections import defaultdict
 >>>table = defaultdict(list)
 >>>with open('my_csv.csv', 'r') as f:
@@ -62,7 +62,7 @@ Recipies
 ...           table[key].append(dictionary[key])
 ...
 >>>with open('my_output_file.txt', 'w') as f:
-...    TablefulOfDict(grouped, file=f)
+...    TablefulOfDict(table, file=f)
 ...
 >>>
 ```
