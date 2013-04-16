@@ -44,3 +44,25 @@ Tableful\() - Prints an iterable in a tableful way.
 Keyword args:
 * file - an optional file like object that can be written
 * headers - an optional headers iterable that will be used in place of the main iterables embedded headers
+
+
+Recipies
+========
+
+* Tableful CSV
+
+```python
+>>>from csv import DictReader
+>>>from tablefule import TablefulOfDict
+>>>from collections import defaultdict
+>>>table = defaultdict(list)
+>>>with open('my_csv.csv', 'r') as f:
+...   for dictionary in DictReader(f):
+...       for key in dictionary:
+...           table[key].append(dictionary[key])
+...
+>>>with open('my_output_file.txt', 'w') as f:
+...    TablefulOfDict(grouped, file=f)
+...
+>>>
+```
