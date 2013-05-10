@@ -18,8 +18,8 @@ _delimiter_values = {
     "html": _delimiter(outer_left='<tr><td class="tablefuletd" align="center">',
                        inbetween='</td><td class="tablefultd" align="center">',
                        outer_right='</td></tr>',
-                       outer_header_left='<tr><th>',
-                       header_inbetween='</th><th>',
+                       outer_header_left='<tr><th class="tablefulth" align="center">',
+                       header_inbetween='</th><th class="tablefulth" align="center">',
                        outer_header_right='</th></tr>',
                        corners='',
                        divider='',
@@ -35,13 +35,15 @@ def TablefulOfDict(dictionary, *, file=None, delim="default"):
 
     keyword args:
     file - any object that can be written to
+    delim - set to html for an html table
+            see docs of Tableful for custom delim settings which are passed through here
     '''
     headers = tableful_utils._GetDictHeaders(dictionary)
     rows = tableful_utils._GetDictRows(dictionary)
     Tableful(rows, headers=headers, file=file, delim="default")
 
 
-def Tableful(iterable, *, headers=None, file=None, delim="html"):
+def Tableful(iterable, *, headers=None, file=None, delim="default"):
     '''
     Prints an iterable in a tableful way!
 
@@ -50,7 +52,8 @@ def Tableful(iterable, *, headers=None, file=None, delim="html"):
     file - any object that can be written to
     delim - two value types are excepted
         1) default - creates the default table using +, |, and - to draw everything
-        2) html - creates a table with class tableful and td class tablefultd
+        2) html - creates a table with class tableful and td class tablefultd and th has class tablefulth
+                  The th are centered
                   The td are centered
                   table has border=1
                   The classes allow for overiding these settings in css
