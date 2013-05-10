@@ -21,6 +21,7 @@ def test_TablefulOfDict():
         ((1, 4), (2, 5), (3, 6)),
         headers=("First", "Second"),
         file=None,
+        delim="default",
         )
 
 

@@ -68,12 +68,12 @@ def _GetColumnWidths(headers, rows):
     return tuple(max(length) for length in zip(headers, columnLengths))
 
 
-def _GetDivider(columMaxes):
+def _GetDivider(columMaxes, *, corners='+', divider='-'):
     '''
     Builds a divider based on the length of each column
     '''
-    dashes = ('-' * length for length in columMaxes)
-    return "+{}+".format('+'.join(dashes))
+    dashes = (divider * length for length in columMaxes)
+    return "{0}{1}{0}".format(corners, corners.join(dashes))
 
 
 def _BuildCellString(text, width):
