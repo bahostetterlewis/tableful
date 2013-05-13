@@ -40,7 +40,7 @@ def TablefulOfDict(dictionary, *, file=None, delim="default"):
     '''
     headers = tableful_utils._GetDictHeaders(dictionary)
     rows = tableful_utils._GetDictRows(dictionary)
-    Tableful(rows, headers=headers, file=file, delim="default")
+    Tableful(rows, headers=headers, file=file, delim=delim)
 
 
 def Tableful(iterable, *, headers=None, file=None, delim="default"):
