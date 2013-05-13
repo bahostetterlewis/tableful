@@ -58,8 +58,8 @@ Recipies
 >>>table = defaultdict(list)
 >>>with open('my_csv.csv', 'r') as f:
 ...   for dictionary in DictReader(f):
-...       for key in dictionary:
-...           table[key].append(dictionary[key])
+...       for key,value in dictionary.items():
+...           table[key].append(value)
 ...
 >>>with open('my_output_file.txt', 'w') as f:
 ...    TablefulOfDict(table, file=f)
